@@ -6,7 +6,7 @@ Run the following command from root folder of the cloned project to install all 
 
 `npm install`
 
-## Verify Setups
+## Verify Setup
 
 In order to verify that everything is setup correctly, run the following command, which should show you the failing tests. This is good! We'll be fixing these tests once we jump into the build step.
 
