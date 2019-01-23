@@ -5,7 +5,7 @@
 <% if (locals.message) { %> <span class="message"><%= message %></span> <% } %>
 <span class="error"></span>
 
-<form id="transferForm" action="transfer" method="POST">
+<form id="transferForm" action="/transfer" method="POST">
   <span>Transfer From: </span>
   <select id="from" name="from" required>
     <option value="checking">Checking</option>
