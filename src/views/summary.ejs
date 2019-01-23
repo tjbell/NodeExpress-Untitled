@@ -5,9 +5,9 @@
     <th>Name</th>
     <th>Account Number</th>
     <% if (account.unique_name == 'credit') { %>
-      <th>Available Balance</th>
+    <th>Available Balance</th>
     <% } else { %>
-      <th>Prior Balance</th>
+    <th>Prior Balance</th>
     <% } %>
     <th>Current Balance</th>
   </tr>
@@ -15,11 +15,11 @@
     <td><a href="/<%= account.unique_name %>"><%= account.nickname %></a></td>
     <td><%= account.account_number %></td>
     <% if (account.unique_name == 'credit') { %>
-      <td>$<%= account.available %></td>
+    <td>$<%= account.available %></td>
     <% } else { %>
-      <td>$<%= account.prior_balance %></td>
+    <td>$<%= account.prior_balance %></td>
     <% } %>
-    
+
     <td>$<%= account.balance %></td>
   </tr>
 </table>
