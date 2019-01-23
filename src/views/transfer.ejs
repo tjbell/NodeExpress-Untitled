@@ -1,28 +1,33 @@
 <%- include('header'); %>
 
-  <h1>Transfer</h1>
+<h1>Transfer</h1>
 
-  <% if (locals.message) { %>
-    <span class="message"><%= message %></span>
-  <% } %>
-  <span class="error"></span>
+<% if (locals.message) { %> <span class="message"><%= message %></span> <% } %>
+<span class="error"></span>
 
-  <form id="transferForm">
-    <span>Transfer From: </span> 
-    <select required>
-      <option value="checking">Checking</option>
-      <option value="savings">Savings</option>
-    </select>
-    <span> to: </span>
-    <select required>
-      <option value="checking">Checking</option>
-      <option value="savings">Savings</option>
-    </select>
-    <input type="number" name="amount" id="amount" required placeholder="amount" step="0.01">
-    <button type="submit">Transfer</button>
-  </form>
+<form id="transferForm" action="transfer" method="POST">
+  <span>Transfer From: </span>
+  <select id="from" name="from" required>
+    <option value="checking">Checking</option>
+    <option value="savings">Savings</option>
+  </select>
+  <span> to: </span>
+  <select id="to" name="to" required>
+    <option value="checking">Checking</option>
+    <option value="savings">Savings</option>
+  </select>
+  <input
+    type="number"
+    name="amount"
+    id="amount"
+    required
+    placeholder="amount"
+    step="0.01"
+  />
+  <button type="submit">Transfer</button>
+</form>
 
-  <br><a href="/">Back to Accounts Summary</a>
-  <script src="js/transfer.js"></script>
+<br /><a href="/">Back to Accounts Summary</a>
+<script src="js/transfer.js"></script>
 
 <%- include('footer'); %>
