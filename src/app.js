@@ -20,6 +20,6 @@ app.get('/credit', (req,res) =>{
     res.render('account', {account:accounts.credit});//object with key value pair
 });
 app.get('/profile', (req,res) =>{
-    res.render('profile', {user:user[0]});//object with key value pair
+    res.render('profile', {user:users[0]});//object with key value pair
 });
 app.listen(3000, () => console.log('PS Project Running on port 3000 !'));
