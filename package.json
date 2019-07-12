@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./src/app.js",
+    "build": "node ./node_modules/typescript/lib/tsc",
     "test:module1": "cross-env NODE_ENV=test mocha --exit './test/module1/*.spec.js' || true",
     "test:module2": "cross-env NODE_ENV=test mocha --exit './test/module2/*.spec.js' || true",
     "test:module3": "cross-env NODE_ENV=test mocha --exit './test/module3/*.spec.js' || true",
@@ -23,10 +24,12 @@
   },
   "homepage": "https://github.com/pluralsight-projects/NodeExpress-BankingPortal#readme",
   "dependencies": {
+    "@types/express": "^4.17.0",
     "ejs": "2.6.1",
     "express": "4.16.3"
   },
   "devDependencies": {
+    "@types/ejs": "^2.6.3",
     "chai": "4.1.2",
     "cheerio": "1.0.0-rc.2",
     "cross-env": "^5.2.0",
