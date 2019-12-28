@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
 app.get('/savings', (req, res) => res.render('account', { account: accounts.savings }));
 app.get('/checking', (req, res) => res.render('account', { account: accounts.checking }));
 app.get('/credit', (req, res) => res.render('account', { account: accounts.credit }));
-app.get('/transfer', (req, res) => res.render('account', { account: accounts.transfer }));
 
+app.get('/transfer', (req, res) => res.render('transfer'));
 app.post('/transfer', (req, res) => {
 	// New balances for accounts that user would transfer into && out of:
 	accounts[req.body.from].balance = accounts[req.body.from].balance - req.body.amount;
@@ -36,8 +36,6 @@ app.post('/transfer', (req, res) => {
 	fs.writeFileSync(path.join(__dirname, 'json/accounts.json'), accountsJSON, 'UTF8');
 	res.render('transfer', { message: 'Transfer Completed' });
 });
-
-// Near your existing routes in app.js create a get route with a URL path of /payment that renders the payment view and passes in an object with a key-value pair of account: accounts.credit.
 
 app.get('/payment', (req, res) => res.render('payment', { account: accounts.credit }));
 app.post('/payment', (req, res) => {
