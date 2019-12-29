@@ -26,15 +26,15 @@ app.post('/transfer', (req, res) => {
 	// New balances for accounts that user would transfer into && out of:
 	accounts[req.body.from].balance = accounts[req.body.from].balance - req.body.amount;
 	accounts[req.body.to].balance = parseInt(accounts[req.body.to].balance) + parseInt(req.body.amount, 10);
-	writeJSON;
+	writeJSON();
 	res.render('transfer', { message: 'Transfer Completed' });
 });
 
 app.get('/payment', (req, res) => res.render('payment', { account: accounts.credit }));
 app.post('/payment', (req, res) => {
 	accounts.credit.balance -= req.body.amount;
-	accounts.credit.available += parseInt(req.body.amount, 10);
-	writeJSON;
+	accounts.credit.availables += parseInt(req.body.amount, 10);
+	writeJSON();
 	res.render('payment', { message: 'Payment Successful', account: accounts.credit });
 });
 
