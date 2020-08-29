@@ -1,28 +1,17 @@
-<%- include('header'); %>
-
-  <h1>Transfer</h1>
-
-  <% if (locals.message) { %>
-    <span class="message"><%= message %></span>
-  <% } %>
+<% } %>
   <span class="error"></span>
 
   <form id="transferForm">
+  <form id="transferForm" action='/transfer' method='post'>
     <span>Transfer From: </span> 
     <select required>
+    <select required name='from' id='from'>
       <option value="checking">Checking</option>
       <option value="savings">Savings</option>
     </select>
     <span> to: </span>
     <select required>
+    <select required name='to' id='to'>
       <option value="checking">Checking</option>
       <option value="savings">Savings</option>
     </select>
-    <input type="number" name="amount" id="amount" required placeholder="amount" step="0.01">
-    <button type="submit">Transfer</button>
-  </form>
-
-  <br><a href="/">Back to Accounts Summary</a>
-  <script src="js/transfer.js"></script>
-
-<%- include('footer'); %>
