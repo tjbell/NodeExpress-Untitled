@@ -14,8 +14,13 @@ const accounts = JSON.parse(accountData);
 const userData = fs.readFileSync(path.join('src','json','users.json'), 'utf-8');
 const users = JSON.parse(userData);
 
+app.get('/savings', (req, res) => 
+  res.render('account', {account: accounts.savings})
+);
+
 app.get('/',(req, res) => 
   res.render('index', { title: 'Accounts summary', accounts: accounts })
 );
+
 app.listen(3000, () => console.log('PS Project Running on port 3000!'));
 
