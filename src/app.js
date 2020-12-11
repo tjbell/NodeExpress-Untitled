@@ -2,16 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const {accounts, users, writeJSON} = require('./data');
-//const { json } = require('express');
-//const { Recoverable } = require('repl');
-
 
 const app = new express();
 app.set('views', path.join(__dirname,'/views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
-
 
 app.get('/savings', (req, res) => 
   res.render('account', {account: accounts.savings})
@@ -40,8 +36,7 @@ app.get('/payment', (req, res) =>
 app.post('/payment', (req, res) => {
   accounts.credit.balance -= parseInt(req.body.amount);
   accounts.credit.available += parseInt(req.body.amount);
-  const accountsJSON = JSON.stringify(accounts);
-  fs.writeFileSync(path.join(__dirname, 'json', 'accounts.json'), accountsJSON, 'UTF8');
+  writeJSON();
   res.render('payment', {message: 'Payment Successful', account: accounts.credit});
 });
 
@@ -52,7 +47,7 @@ app.get('/',(req, res) =>
 app.post('/transfer', (req, res) => {
   accounts[req.body.from].balance -= parseInt(req.body.amount);
   accounts[req.body.to].balance += parseInt(req.body.amount);
-  
+  writeJSON();
   res.render('transfer', {message: 'Transfer Completed'});
 });
 
