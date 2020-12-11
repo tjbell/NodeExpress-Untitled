@@ -31,6 +31,10 @@ app.get('/profile', (req, res) =>
   res.render('profile', {user: users[0]})
 );
 
+app.get('/transfer', (req, res) => 
+  res.render('transfer')
+);
+
 app.get('/',(req, res) => 
   res.render('index', { title: 'Account Summary', accounts: accounts })
 );
