@@ -8,7 +8,7 @@
   <span class="error"></span>
 
   <p>Current Balance: $<%= account.balance %></p>
-  <form id="paymentForm" action="/payment" method="POST">
+  <form id="paymentForm" action="/services/payment" method="POST">
     <label for="amount">Payment: <input type="number" name="amount" id="amount" required placeholder="amount" step="0.01"></label>
     <button type="submit">Submit Payment</button>
   </form>
