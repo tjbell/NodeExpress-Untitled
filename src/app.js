@@ -26,8 +26,12 @@ app.get('/credit', (req, res) =>
   res.render('account', {account: accounts.credit})
 );
 
+app.get('/profile', (req, res) => 
+  res.render('profile', {user: users[0]})
+);
+
 app.get('/',(req, res) => 
-  res.render('index', { title: 'Accounts summary', accounts: accounts })
+  res.render('index', { title: 'Account Summary', accounts: accounts })
 );
 
 app.listen(3000, () => console.log('PS Project Running on port 3000!'));
