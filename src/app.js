@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const { json } = require('express');
-const { Recoverable } = require('repl');
+const {accounts, users, writeJSON} = require('./data');
+//const { json } = require('express');
+//const { Recoverable } = require('repl');
+
 
 const app = new express();
 app.set('views', path.join(__dirname,'/views'));
@@ -10,11 +12,6 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.urlencoded({extended: true}));
 
-const accountData = fs.readFileSync(path.join('src','json','accounts.json'), 'utf-8');
-const accounts = JSON.parse(accountData);
-
-const userData = fs.readFileSync(path.join('src','json','users.json'), 'utf-8');
-const users = JSON.parse(userData);
 
 app.get('/savings', (req, res) => 
   res.render('account', {account: accounts.savings})
@@ -55,8 +52,7 @@ app.get('/',(req, res) =>
 app.post('/transfer', (req, res) => {
   accounts[req.body.from].balance -= parseInt(req.body.amount);
   accounts[req.body.to].balance += parseInt(req.body.amount);
-  const accountsJSON = JSON.stringify(accounts);
-  fs.writeFileSync(path.join(__dirname, 'json', 'accounts.json'), accountsJSON, 'UTF8');
+  
   res.render('transfer', {message: 'Transfer Completed'});
 });
 
