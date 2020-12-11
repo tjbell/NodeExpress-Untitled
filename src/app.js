@@ -43,6 +43,7 @@ app.get('/',(req, res) =>
 app.post('/transfer', (req, res) => {
   accounts[req.body.from].balance -= parseInt(req.body.amount);
   accounts[req.body.to].balance += parseInt(req.body.amount);
+  const accountsJSON = JSON.stringify(accounts);
   res.render('transfer', {message: 'Transfer Completed'});
 });
 
