@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const { json } = require('express');
+const { Recoverable } = require('repl');
 
 const app = new express();
 app.set('views', path.join(__dirname,'/views'));
@@ -38,6 +39,12 @@ app.get('/transfer', (req, res) =>
 app.get('/',(req, res) => 
   res.render('index', { title: 'Account Summary', accounts: accounts })
 );
+
+app.post('/transfer', (req, res) => {
+  accounts[req.body.from].balance = accounts[req.body.from].balance - parseInt(req.body.amount);
+  accounts[req.body.to].balance = accounts[req.body.to].balance + parseInt(req.body.amount);
+  res.render('transfer', {message: 'Transfer Completed'});
+});
 
 app.listen(3000, () => console.log('PS Project Running on port 3000!'));
 
